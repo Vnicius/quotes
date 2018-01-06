@@ -1,0 +1,12 @@
+.quotes-container{
+    display: flex;
+    flex-wrap: wrap;
+    flex-flow: row;
+    justify-content: centers;
+}
+
+@media (max-width: 600px) {
+    .quotes-container{
+        flex-flow: column;
+    }
+}
