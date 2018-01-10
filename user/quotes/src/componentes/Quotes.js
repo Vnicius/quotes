@@ -7,7 +7,7 @@ import './quotes.css'
 export default class Quotes extends Component {
     fillQuotes(){
         return this.props.quotes.map((quote) => {
-                return <Quote {...quote} />
+                return <Quote {...quote} key={quote._id}/>
                 })
     }
 

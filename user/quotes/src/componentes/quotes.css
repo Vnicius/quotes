@@ -2,7 +2,7 @@
     display: flex;
     flex-wrap: wrap;
     flex-flow: row;
-    justify-content: centers;
+    justify-content: center;
 }
 
 @media (max-width: 600px) {
