@@ -23,15 +23,12 @@ export default class Quote extends Component {
                 </div>
                 <nav className="level is-mobile">
                     <div className="level-left">
-                    <a className="level-item">
-                        <span className="icon is-small"><i className="fa fa-reply"></i></span>
-                    </a>
-                    <a className="level-item">
-                        <span className="icon is-small"><i className="fa fa-retweet"></i></span>
-                    </a>
-                    <a className="level-item">
-                        <span className="icon is-small"><i className="fa fa-heart"></i></span>
-                    </a>
+                        <a className="level-item">
+                            <span className="icon is-small icon-color"><i className="fa fa-retweet"></i></span>
+                        </a>
+                        <a className="level-item">
+                            <span className="icon is-small icon-color"><i className="fa fa-heart"></i></span>
+                        </a>
                     </div>
                 </nav>
                 </div>
