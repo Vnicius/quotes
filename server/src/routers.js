@@ -21,4 +21,10 @@ router.post('/submit', (req, res) => {
     //res.send({error: false})
 });
 
+router.post('/like', (req, res) => {
+    console.log(req.body)
+    dao.updateLike(req.body.id, res)
+    //res.send({error: false})
+});
+
 module.exports = router;

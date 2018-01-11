@@ -37,10 +37,30 @@ module.exports = class QuoteDAO {
                 let max = quotes.length;
                 let choose = [];
                 let index = 0;
+                let listIndexes = [];
+                const hasIndex = (index) => {
+                    for (let j = 0; j < listIndexes.length; j++) {
+                        if(listIndexes[j] == index){
+                            return true;
+                        }
+                    }
 
-                for (let i = 0; i < quant; i++) {
-                    index = Math.floor((Math.random() * max));
-                    choose.push(quotes[index]);
+                    return false;
+                }
+
+                if(max <= quant){
+                    choose = quotes;
+                } else {
+
+                    for (let i = 0; i < quant; i++) {
+                        index = Math.floor((Math.random() * max));
+                        if(hasIndex(index)){
+                            i--;
+                        } else {
+                            listIndexes.push(index);
+                            choose.push(quotes[index]);
+                        }
+                    }
                 }
 
                 res.send({error : false, data : { quotes: choose }});
