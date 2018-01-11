@@ -28,6 +28,16 @@ module.exports = class QuoteDAO {
         });
     }
 
+    update(quote, res) {
+        Quote.update({"_id" : Types.ObjectId(quote._id)}, quote, { upsert : true}, (err) => {
+            if(err) {
+                res.send({error : true, message : "Error to update de quote!"});
+            } else {
+                res.send({error: false});
+            }
+        });
+    }
+
     randomQuotes(quant, res) {
         Quote.find({}, (err, quotes) => {
             if (err) {
@@ -80,5 +90,15 @@ module.exports = class QuoteDAO {
                     }
                 });
 
+    }
+
+    searchAuthor(authorName, res) {
+        Quote.find({author: {$regex : "^" + authorName + "$", $options: 'i'}}, (err, quotes) => {
+            if(err) {
+                res.send({error : true, message: 'Database access error!'});
+            } else {
+                res.send({error: false, data: {quotes : quotes}});
+            }
+        })
     }
 }

@@ -27,4 +27,15 @@ router.post('/like', (req, res) => {
     //res.send({error: false})
 });
 
+router.put('/update', (req, res) => {
+    console.log(req.body);
+    dao.update(req.body, res);
+    //res.send({error: false});
+});
+
+router.get('/search/:author', (req, res) => {
+    console.log(req.params);
+    dao.searchAuthor(req.params.author, res);
+})
+
 module.exports = router;
