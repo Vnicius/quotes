@@ -5,32 +5,23 @@ import { connect } from 'react-redux';
 import Quotes from '../componentes/Quotes'
 import { fetch } from '../actions/random-quotes-actions'
 
-// const data = {
-//     quotes: [
-//                 {
-//                     author: "Autor1",
-//                     source: "Livro - Volume qualquer",
-//                     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis."
-//                 },
-//                 {
-//                     author: "Autor2",
-//                     source: "Livro2 - Volume qualquer 2",
-//                     text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis."
-//                 }
-//             ]
-// }
-
 class Home extends Component {
+
+  showQuotes(){
+    if(!this.props.error){
+      return (<Quotes quotes={this.props.quotes}/>);
+    }
+  }
+
   render() {
-    if(!this.props.fetched){
+    if(!this.props.fetched && !this.props.error){
       this.props.fetch(4);
     }
-
-    console.log(this.props.quotes);
+    //#console.log(this.props.quotes);
     return (
       <div>
         <h2>Random Quotes</h2>
-        <Quotes quotes={this.props.quotes}/>
+        {this.showQuotes()}
       </div>
     )
   }
@@ -40,7 +31,8 @@ function mapStateToProps(state) {
   return {
     fetching: state.random.fetching,
     fetched: state.random.fetched,
-    quotes: state.random.quotes
+    quotes: state.random.quotes,
+    error: state.random.error
   };
 }
 
