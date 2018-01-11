@@ -8,7 +8,7 @@ import Quotes from '../componentes/Quotes';
 class TopQuotes extends Component {
   render() {
     if(!this.props.fetched){
-      this.props.fetch(4);
+      this.props.fetch(10);
     }
 
     return (
