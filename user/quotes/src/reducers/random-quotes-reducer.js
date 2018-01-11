@@ -12,7 +12,7 @@ export default function (state=initialState, action) {
             return {...state, fetching: true};
         
         case "FETCH_QUOTES_FULFILLED":
-            return {...state, fetching: false, fetched: true, quotes: action.payload.data.data};
+            return {...state, fetching: false, fetched: true, quotes: action.payload.data.data.quotes};
         
         case "FETCH_QUOTES_REJECTED":
             return {...state, fetching: false, error: true, quotes: action.payload};
