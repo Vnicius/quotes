@@ -1,11 +1,37 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class TopQuotes extends Component {
+import { fetch } from '../actions/top-quotes-actions';
+import Quotes from '../componentes/Quotes';
+
+class TopQuotes extends Component {
   render() {
+    if(!this.props.fetched){
+      this.props.fetch(4);
+    }
+
     return (
       <div>
-        <h1>Top Quotes</h1>
+        <h1>Top 10 Quotes</h1>
+        <Quotes quotes={this.props.quotes} />
       </div>
     )
   }
 };
+
+function mapStateToProps(state) {
+  return {
+    fetching: state.top.fecthing,
+    fetched: state.top.fetched,
+    quotes: state.top.quotes
+  };
+}
+
+function mapDispatchtoProps(dispatch) {
+  return bindActionCreators({
+        fetch: fetch
+        }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchtoProps)(TopQuotes);
