@@ -5,3 +5,8 @@
 .icon-color{
     color: #00d1b2 !important;
 }
+
+.value{
+    color: #00d1b2 !important;
+    margin-left: 5px !important;
+}

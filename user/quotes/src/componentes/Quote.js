@@ -25,9 +25,11 @@ export default class Quote extends Component {
                     <div className="level-left">
                         <a className="level-item">
                             <span className="icon is-small icon-color"><i className="fa fa-retweet"></i></span>
+                            <span className="value">{this.props.shares}</span>
                         </a>
                         <a className="level-item">
                             <span className="icon is-small icon-color"><i className="fa fa-heart"></i></span>
+                            <span className="value">{this.props.likes}</span>
                         </a>
                     </div>
                 </nav>
