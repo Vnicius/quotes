@@ -39,3 +39,10 @@ export function handlerFinish() {
         type: "FINISH"
     }
 }
+
+export function handlerUpdate(quoteData) {
+    return {
+        type: "UPDATE",
+        payload: axios.put("http://localhost:8888/api/quotes/update", quoteData)
+    }
+}

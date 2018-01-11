@@ -10,19 +10,33 @@ import { handlerText,
          handlerSource,
          handlerSubmit,
          handlerEdit,
-         handlerFinish } from '../actions/form-actions';
+         handlerFinish,
+         handlerUpdate } from '../actions/form-actions';
 import './formquote.css';
 
 class FormQuote extends Component {
 
   submit() {
-    this.props.handlerSubmit(
-      {
+    if(this.props.submitted) {
+      var quote = {
         text: this.props.text,
         author: this.props.author,
         source: this.props.source,
+        _id: this.props._id,
+        likes: 0,
+        shares: 0,
       }
-    )
+  
+      this.props.handlerUpdate(quote);
+    } else {
+      this.props.handlerSubmit(
+        {
+          text: this.props.text,
+          author: this.props.author,
+          source: this.props.source,
+        }
+      )
+    }
   }
 
   showForm() {
@@ -100,6 +114,8 @@ function mapStateToProps(state) {
     submitting: state.form.submitting,
     _id: state.form._id,
     edit: state.form.edit,
+    updating: state.form.updating,
+    updated: state.form.updated,
   }
 }
 
@@ -111,6 +127,7 @@ function mapDispatchToProps(dispatch) {
       handlerSubmit: handlerSubmit,
       handlerEdit: handlerEdit,
       handlerFinish: handlerFinish,
+      handlerUpdate: handlerUpdate,
     },dispatch);
 }
 

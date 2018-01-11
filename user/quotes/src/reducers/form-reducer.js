@@ -7,6 +7,8 @@ const initial = {
     submitted: false,
     error: null,
     edit: false,
+    updating: false,
+    updated: false,
 }
 
 export default function(state=initial, action) {
@@ -37,6 +39,15 @@ export default function(state=initial, action) {
         
         case "FINISH":
             return initial
+        
+        case "UPDATE_PENDING":
+            return {...state, updating: true};
+        
+        case "UPDATE_FULFILLED":
+            return {...state, updating: false, updated: true};
+        
+        case "UPDATE_REJECTED":
+            return {...state, updating: false, error: action.payload.data};
 
         default:
             return state
