@@ -61,6 +61,10 @@ class FormQuote extends Component {
     }
   }
 
+  handlerLike(id) {
+    console.log(id);
+  }
+
   showQuote() {
     if(this.props.submitted){
       var quote = {
@@ -72,7 +76,7 @@ class FormQuote extends Component {
           shares: 0,
         }
 
-      return <Quote {...quote} />
+      return <Quote {...quote} onClickLike={this.handlerLike}/>
     }
   }
 
