@@ -11,7 +11,8 @@ import { handlerText,
          handlerSubmit,
          handlerEdit,
          handlerFinish,
-         handlerUpdate } from '../actions/form-actions';
+         handlerUpdate,
+         handlerCancel } from '../actions/form-actions';
 import './formquote.css';
 
 class FormQuote extends Component {
@@ -89,6 +90,17 @@ class FormQuote extends Component {
                      onClick={this.props.handlerFinish}/>
     }
   }
+
+  cancelClick() {
+    this.props.handlerCancel(this.props._id)
+  }
+
+  showCancel() {
+    if(this.props.submitted) {
+      return <Button label={"Cancel"} 
+                     onClick={this.cancelClick.bind(this)}/>
+    }
+  }
   
   render() {
     return (
@@ -99,6 +111,7 @@ class FormQuote extends Component {
         <div className="buttons">
           {this.showEdit()}
           {this.showFinish()}
+          {this.showCancel()}
         </div>
       </div>
     )
@@ -128,6 +141,7 @@ function mapDispatchToProps(dispatch) {
       handlerEdit: handlerEdit,
       handlerFinish: handlerFinish,
       handlerUpdate: handlerUpdate,
+      handlerCancel: handlerCancel,
     },dispatch);
 }
 

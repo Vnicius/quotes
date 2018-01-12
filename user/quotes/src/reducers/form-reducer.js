@@ -48,7 +48,13 @@ export default function(state=initial, action) {
         
         case "UPDATE_REJECTED":
             return {...state, updating: false, error: action.payload.data};
-
+       
+        case "CANCEL_FULFILLED":
+            return initial;
+        
+        case "CANCEL_REJECTED":
+            return {...state, error: action.payload.data};
+        
         default:
             return state
     }

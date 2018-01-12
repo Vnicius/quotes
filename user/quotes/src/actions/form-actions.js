@@ -46,3 +46,10 @@ export function handlerUpdate(quoteData) {
         payload: axios.put("http://localhost:8888/api/quotes/update", quoteData)
     }
 }
+
+export function handlerCancel(id) {
+    return {
+        type: "CANCEL",
+        payload: axios.delete("http://localhost:8888/api/quotes/remove/" + id)
+    }
+}

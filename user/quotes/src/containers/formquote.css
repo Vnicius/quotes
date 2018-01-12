@@ -1,5 +1,11 @@
 .buttons{
-    display: inline-block !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 10px;
+}
+
+.buttons Button {
     margin: 10px;
 }
 
