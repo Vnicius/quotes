@@ -38,10 +38,10 @@ router.get('/search/:author', (req, res) => {
     dao.searchAuthor(req.params.author, res);
 })
 
-router.delete('/remove', (req, res) => {
-    console.log(req.body);
-    dao.remove(req.body.id, res);
-    //res.send("aasdasd")
+router.delete('/remove/:id', (req, res) => {
+    console.log(req.params);
+    dao.remove(req.params.id, res);
+    //res.send({error: false})
 })
 
 module.exports = router;
