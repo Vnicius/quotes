@@ -8,7 +8,9 @@ export default class Quotes extends Component {
     fillQuotes(){
         if(this.props.quotes){
             return this.props.quotes.map((quote) => {
-                return <Quote {...quote} key={quote._id}/>
+                return <Quote {...quote}
+                              key={quote._id}
+                              onClickLike={this.props.onClickLike}/>
                 })
         }
     }

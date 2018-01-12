@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 
 import Quotes from '../componentes/Quotes';
 import Search from '../componentes/Search';
-import { fetch } from '../actions/random-quotes-actions';
+import { fetch, handlerLike } from '../actions/random-quotes-actions';
 import { handlerSearchAuthor, handlerAuthor } from '../actions/search-actions';
 
 class Home extends Component {
 
   showQuotes(){
     if(!this.props.error){
-      return (<Quotes quotes={this.props.quotes}/>);
+      return (<Quotes quotes={this.props.quotes}
+                      onClickLike={this.props.handlerLike}/>);
     }
   }
 
@@ -74,6 +75,7 @@ function mapDispatchToProps(dispach) {
       fetch: fetch,
       handlerAuthor: handlerAuthor,
       handlerSearchAuthor: handlerSearchAuthor,
+      handlerLike: handlerLike,
     }, dispach);
 }
 

@@ -3,6 +3,10 @@ import React, { Component } from 'react';
 import './quote.css';
 
 export default class Quote extends Component {
+  handlerLike() {
+    this.props.onClickLike(this.props._id);
+  }
+
   render() {
     return (
       <div>
@@ -24,11 +28,15 @@ export default class Quote extends Component {
                 <nav className="level is-mobile">
                     <div className="level-left">
                         <a className="level-item">
-                            <span className="icon is-small icon-color"><i className="fa fa-retweet"></i></span>
+                            <span className="icon is-small icon-color">
+                                <i className="fa fa-retweet"></i>
+                            </span>
                             <span className="value">{this.props.shares}</span>
                         </a>
-                        <a className="level-item">
-                            <span className="icon is-small icon-color"><i className="fa fa-heart"></i></span>
+                        <a className="level-item" onClick={this.handlerLike.bind(this)}>
+                            <span className="icon is-small icon-color">
+                                <i className="fa fa-heart"></i>
+                            </span>
                             <span className="value">{this.props.likes}</span>
                         </a>
                     </div>
