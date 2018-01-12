@@ -17,6 +17,29 @@ export default function (state=initialState, action) {
         case "FETCH_QUOTES_REJECTED":
             return {...state, fetching: false, error: true, quotes: action.payload};
         
+        case "LIKE_FULFILLED":
+            if(action.payload.data.error){
+                alert(action.payload.data.message);
+
+                return state;
+            } else {
+                var aux = state.quotes.slice();
+
+                aux.forEach((element) => {
+                    if(element._id === action.payload.data.data.id) {
+                        element.likes++;
+                    }
+                });
+                
+                localStorage.setItem(action.payload.data.data.id, true);
+
+                return {...state, quotes: aux};
+            }
+        
+        case "LIKE_REJECTED":
+            alert(action.payload);    
+
+            return {...state, error: action.payload};
         default:
             return state;
     }
