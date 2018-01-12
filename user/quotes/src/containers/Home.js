@@ -38,8 +38,9 @@ class Home extends Component {
 
     return (
       <div>
+        <h2>Search Quotes By Author</h2>
         <div className="search">
-          <Search placeholder={"Search"}
+          <Search placeholder={"Search Author"}
                   onChange={this.props.handlerAuthor}
                   onKeyPress={this.props.handlerSearchAuthor}/>
           {this.showLoading()}
