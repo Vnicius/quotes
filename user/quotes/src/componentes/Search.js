@@ -8,7 +8,7 @@ export default class Search extends Component {
   }
 
   handlerKey(event) {
-      if(event.key == 'Enter') {
+      if(event.key === 'Enter') {
         this.props.onKeyPress(event.target.value);
       }
   }
