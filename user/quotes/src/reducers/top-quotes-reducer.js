@@ -11,12 +11,19 @@ export default function (state=initial, action) {
             return {...state, fetching: true};
         
         case "FETCH_TOP_FULFILLED":
-            return {...state,
-                    fetching: false,
-                    fetched: true,
-                    quotes: action.payload.data.data.quotes};
+            if(action.payload.data.error){
+                alert(action.payload.data.message);
+
+                return state;
+            } else {
+                return {...state,
+                        fetching: false,
+                        fetched: true,
+                        quotes: action.payload.data.data.quotes};
+            }
         
         case "FETCH_TOP_REJECTED":
+            alert(action.payload);
             return {...state, fetching: false, error: action.payload};
         
         default:

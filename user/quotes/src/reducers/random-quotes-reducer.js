@@ -15,7 +15,8 @@ export default function (state=initialState, action) {
             return {...state, fetching: false, fetched: true, quotes: action.payload.data.data.quotes};
         
         case "FETCH_QUOTES_REJECTED":
-            return {...state, fetching: false, error: true, quotes: action.payload};
+            alert(action.payload);
+            return {...state, fetching: false, error: action.payload};
         
         case "LIKE_FULFILLED":
             if(action.payload.data.error){
