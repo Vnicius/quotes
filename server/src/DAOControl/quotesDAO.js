@@ -101,4 +101,14 @@ module.exports = class QuoteDAO {
             }
         })
     }
+
+    remove(id, res) {
+        Quote.remove({_id: Types.ObjectId(id)}, (err) => {
+            if(err) {
+                res.send({error : true, message: 'Database access error!'});
+            } else {
+                res.send({error: false});
+            }
+        })
+    }
 }
