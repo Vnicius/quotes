@@ -81,7 +81,7 @@ module.exports = class QuoteDAO {
     topQuotes(quant, res){
         Quote.find({})
             .limit(quant)
-            .sort({likes : 1})
+            .sort({likes : -1})
             .exec((err, quotes) => {
                     if(err) {
                         res.send({error: true, message: "Error to access the database!"});
