@@ -23,7 +23,7 @@ module.exports = class QuoteDAO {
             if (err) {
                 res.send({error : true, message : "Error to update de quote!"});
             } else {
-                res.send({error : false});
+                res.send({error : false, data: {id: quoteId}});
             }
         });
     }
