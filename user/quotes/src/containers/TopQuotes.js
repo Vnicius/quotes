@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { fetch } from '../actions/top-quotes-actions';
+import { fetch, handlerLike } from '../actions/top-quotes-actions';
 import Quotes from '../componentes/Quotes';
 
 class TopQuotes extends Component {
@@ -14,7 +14,8 @@ class TopQuotes extends Component {
     return (
       <div>
         <h1>Top 10 Quotes</h1>
-        <Quotes quotes={this.props.quotes} />
+        <Quotes quotes={this.props.quotes} 
+                onClickLike={this.props.handlerLike}/>
       </div>
     )
   }
@@ -30,7 +31,8 @@ function mapStateToProps(state) {
 
 function mapDispatchtoProps(dispatch) {
   return bindActionCreators({
-        fetch: fetch
+        fetch: fetch,
+        handlerLike: handlerLike,
         }, dispatch);
 }
 
