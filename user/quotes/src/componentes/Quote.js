@@ -3,8 +3,17 @@ import React, { Component } from 'react';
 import './quote.css';
 
 export default class Quote extends Component {
+  
   handlerLike() {
     this.props.onClickLike(this.props._id);
+  }
+
+  likeClass(){
+      if(localStorage.getItem(this.props._id)) {
+          return "fa fa-heart-o";
+      }
+
+      return "fa fa-heart";
   }
 
   render() {
@@ -35,7 +44,9 @@ export default class Quote extends Component {
                         </a>
                         <a className="level-item" onClick={this.handlerLike.bind(this)}>
                             <span className="icon is-small icon-color">
-                                <i className="fa fa-heart"></i>
+                                <i className={(localStorage.getItem(this.props._id) 
+                                                ? "fa fa-heart" 
+                                                : "fa fa-heart-o")} ></i>
                             </span>
                             <span className="value">{this.props.likes}</span>
                         </a>
