@@ -1,10 +1,11 @@
 import axios from 'axios';
+const baseUrl = "http://localhost:8888/api/quotes/";
 
 export function fetch(quant) {
     console.log('Fetch!')
     
     return {type: "FETCH_QUOTES",
-            payload: axios.get('http://localhost:8888/api/quotes/radomquotes',{params:{quant : quant}})}
+            payload: axios.get(baseUrl + "radomquotes",{params:{quant : quant}})}
 }
 
 export function handlerLike(id) {
@@ -15,6 +16,6 @@ export function handlerLike(id) {
     }
     return {
         type: "LIKE",
-        payload: axios.put('http://localhost:8888/api/quotes/like/', { id: id})
+        payload: axios.put(baseUrl + "like/", { id: id})
     }
 }

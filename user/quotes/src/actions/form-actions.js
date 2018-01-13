@@ -1,4 +1,5 @@
 import axios from 'axios';
+const baseUrl = "http://localhost:8888/api/quotes/";
 
 export function handlerText(value) {
     return {
@@ -24,7 +25,7 @@ export function handlerSource(value) {
 export function handlerSubmit(quoteData) {
     return {
         type: "SUBMIT",
-        payload: axios.post('http://localhost:8888/api/quotes/submit', quoteData)
+        payload: axios.post(baseUrl + "submit", quoteData)
     }
 }
 
@@ -43,13 +44,13 @@ export function handlerFinish() {
 export function handlerUpdate(quoteData) {
     return {
         type: "UPDATE",
-        payload: axios.put("http://localhost:8888/api/quotes/update", quoteData)
+        payload: axios.put(baseUrl + "update", quoteData)
     }
 }
 
 export function handlerCancel(id) {
     return {
         type: "CANCEL",
-        payload: axios.delete("http://localhost:8888/api/quotes/remove/" + id)
+        payload: axios.delete(baseUrl + "remove/" + id)
     }
 }
