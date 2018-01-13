@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Quotes from '../componentes/Quotes';
 import Search from '../componentes/Search';
 import { fetch, handlerLike } from '../actions/random-quotes-actions';
-import { handlerSearchAuthor, handlerAuthor } from '../actions/search-actions';
+import { handlerSearchAuthor, handlerAuthor, handlerLikeSearch } from '../actions/search-actions';
 
 class Home extends Component {
 
@@ -25,7 +25,8 @@ class Home extends Component {
   showSearchResult() {
     if(this.props.searched) {
       if(this.props.searchQuotes.length > 0) {
-        return <Quotes quotes={this.props.searchQuotes} />
+        return <Quotes quotes={this.props.searchQuotes}
+                       onClickLike={this.props.handlerLikeSearch}/>
       } else {
         return <span>NO RESULTS</span>
       }
@@ -76,6 +77,7 @@ function mapDispatchToProps(dispach) {
       handlerAuthor: handlerAuthor,
       handlerSearchAuthor: handlerSearchAuthor,
       handlerLike: handlerLike,
+      handlerLikeSearch: handlerLikeSearch,
     }, dispach);
 }
 
