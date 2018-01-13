@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 
 import './app.css';
+import logo from '../quotes-logo.png';
 
 export default class App extends Component {
   render() {
@@ -9,8 +10,8 @@ export default class App extends Component {
       <div>
       <nav className="navbar is-primary" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-            <a className="navbar-item" href="https://bulma.io">
-            <img src="https://bulma.io/images/bulma-logo.png" 
+            <a className="navbar-item" href="">
+            <img src={logo} 
                  alt="Bulma: a modern CSS framework based on Flexbox" 
                  width="112" height="28" />
             </a>
